@@ -1,0 +1,109 @@
+/*CARACTERISTICAS GERAIS*/
+body { 
+  font-family: 'Inter', sans-serif;
+}
+:root {
+  --black: #000000;
+  --gray-bg:#111111;
+  --gray-components:#2727279d;
+  --gray-light:#CCCCCC; 
+  background-color: var(--gray-bg);
+  color: var(--gray);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app{ /*APLICATIVO GERAL*/
+  width: 1440px;
+  height: 909px;
+}
+
+.left-container{ /*BARRA LATERAL*/
+  width: 263px;
+  height: 909px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black);
+  position: absolute;
+  align-items:flex-start;
+}
+.title{
+  color: var(--gray-light);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48.41px;
+  margin-top: 85px;
+  margin-left: 37px;
+}
+.artist-btn{ /*BOTÃO "ARTISTAS" */
+  position: absolute;
+  margin-top: 160px;
+  margin-left: 106px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-light);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.2px;
+}
+.artist-btn:hover{color: white;}
+
+.like-btn{ /*BOTÃO "MÚSICAS CURTIDAS" */
+  position: absolute;
+  margin-top: 204px;
+  margin-left: 63px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-light);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.2px;
+}
+.like-btn:hover{color: white;}
+
+.logout-btn{ /*LOGOUT" */
+  position: absolute;
+  margin-top: 865px;
+  margin-left: 97px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-light);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.2px;
+}
+.logout-btn:hover{color: white;}
+
+.main-container{ /*AREA PRINCIPAL*/ 
+  display: flex;
+  flex-direction: column;
+  padding-left: 321px;
+  padding-top: 124px;
+  color: var(--gray-light);
+}
+.artists-container{ /*AREA COM OS ARTISTAS*/
+  box-sizing: border-box;
+  width: 966px;
+  height: 602px;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+}
+.comp{ /*AREA DE COMPONENTES SEPARADA ENTRE BAIXO E EM CIMA*/
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;}
+.components{ /*CADA COMPONENTE COM UM ARTISTA*/ 
+  background-color: var(--gray-components);
+  width: 186px;
+  height: 280px;
+  border-radius: 16px;
+  border:none;
+  cursor: pointer;
+}
+.components:hover{background-color: #cccccc28;}

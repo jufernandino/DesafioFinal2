@@ -16,7 +16,7 @@ function App() {
         <h1 className='title'>iSpotify ®</h1>
         <button className='artist-btn'>
           <span className="material-symbols-outlined">
-            radio_button_checked&ensp;</span>
+            mode_standby&ensp;</span>
           Artistas
         </button>
         <button className='like-btn'>
@@ -26,7 +26,7 @@ function App() {
         </button>
         <button className='logout-btn'>
           <span className="material-symbols-outlined">
-          mode_standby&ensp;</span>
+            logout&ensp;</span>
           Logout
         </button>
       </div>
@@ -48,7 +48,7 @@ function App() {
             <button className='components'></button>
             <button className='components'></button>
           </div>
-        </div> {/* FIMAREA DOS ARTISTAS*/}
+        </div> {/* FIM AREA DOS ARTISTAS*/}
       </div> {/*FIM AREA PRINCIPAL*/}
       
     </div>

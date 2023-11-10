@@ -15,7 +15,7 @@ function App() {
       <div className='left-container'>
         <h1 className='title'>iSpotify ®</h1>
         <button className='artist-btn'>
-          <span class="material-symbols-outlined">
+          <span className="material-symbols-outlined">
             radio_button_checked&ensp;</span>
           Artistas
         </button>
@@ -25,8 +25,8 @@ function App() {
           Músicas Curtidas
         </button>
         <button className='logout-btn'>
-          <span class="material-symbols-outlined">
-            logout&ensp;</span>
+          <span className="material-symbols-outlined">
+          mode_standby&ensp;</span>
           Logout
         </button>
       </div>

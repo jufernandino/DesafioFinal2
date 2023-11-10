@@ -5,7 +5,7 @@ body {
 :root {
   --black: #000000;
   --gray-bg:#111111;
-  --gray-components:#2727279d;
+  --gray-components:#181818;
   --gray-light:#CCCCCC; 
   background-color: var(--gray-bg);
   color: var(--gray);
@@ -40,7 +40,7 @@ body {
 .artist-btn{ /*BOTÃO "ARTISTAS" */
   position: absolute;
   margin-top: 160px;
-  margin-left: 106px;
+  margin-left: 86px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -54,7 +54,7 @@ body {
 .like-btn{ /*BOTÃO "MÚSICAS CURTIDAS" */
   position: absolute;
   margin-top: 204px;
-  margin-left: 63px;
+  margin-left: 27px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -68,7 +68,7 @@ body {
 .logout-btn{ /*LOGOUT" */
   position: absolute;
   margin-top: 865px;
-  margin-left: 97px;
+  margin-left: 65px;
   background-color: transparent;
   border: none;
   cursor: pointer;

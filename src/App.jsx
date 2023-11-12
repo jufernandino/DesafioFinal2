@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import Card from '../components/Card';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,18 +36,18 @@ function App() {
         <h1>Artistas</h1>
         <div className="artists-container"> {/*AREA DOS ARTISTAS*/}
           <div className='comp'> {/*LINHA DE CIMA DOS ARTISTAS*/}
-            <button className='components'></button>
-            <button className='components'></button>
-            <button className='components'></button>
-            <button className='components'></button>
-            <button className='components'></button>
+            <Card imageSrc="" artistName="Engenheiros do Havai"/>
+            <Card imageSrc="" artistName="Cidade Negra"/>
+            <Card imageSrc="" artistName="Capital Inicial"/>
+            <Card imageSrc="" artistName="Skank"/>
+            <Card imageSrc="" artistName="Paralamas de Sucesso"/>
           </div>
           <div className='comp'> {/*LINHA DE BAIXO DOS ARTISTAS*/}
-            <button className='components'></button>
-            <button className='components'></button>
-            <button className='components'></button>
-            <button className='components'></button>
-            <button className='components'></button>
+            <Card imageSrc="" artistName="Lulu Santos"/>
+            <Card imageSrc="" artistName="Cazuza"/>
+            <Card imageSrc="" artistName="Kid Abelha"/>
+            <Card imageSrc="" artistName="Biquíni Cavadão"/>
+            <Card imageSrc="" artistName="O Rappa"/>
           </div>
         </div> {/* FIM AREA DOS ARTISTAS*/}
       </div> {/*FIM AREA PRINCIPAL*/}

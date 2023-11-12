@@ -97,13 +97,5 @@ body {
 .comp{ /*AREA DE COMPONENTES SEPARADA ENTRE BAIXO E EM CIMA*/
   display: flex;
   flex-direction: row;
-  justify-content:space-between;}
-.components{ /*CADA COMPONENTE COM UM ARTISTA*/ 
-  background-color: var(--gray-components);
-  width: 186px;
-  height: 280px;
-  border-radius: 16px;
-  border:none;
-  cursor: pointer;
+  justify-content:space-between;
 }
-.components:hover{background-color: #cccccc28;}

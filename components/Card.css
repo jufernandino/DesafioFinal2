@@ -1,0 +1,35 @@
+#card-container{ 
+    background-color: var(--gray-components);
+    width: 186px;
+    height: 280px;
+    border-radius: 16px;
+    border:none;
+    cursor: pointer;
+  }
+
+#card-container:hover{
+    background-color: #cccccc28;
+}
+
+#artist-image{
+    margin-top: 5%;
+}
+
+#artist-name{
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 15px;
+    margin-left: 5%;
+    margin-top: 10%; /*esta porcentagem é em relação à largura do container*/
+}
+
+
+#Artista{
+    font-weight: 700;
+    font-size: 15px;
+    color: #8C8C8C;
+    margin-left: 5%;
+    margin-top: 10%; /*esta porcentagem é em relação à largura do container*/
+}
+
+

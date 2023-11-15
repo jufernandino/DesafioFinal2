@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Card.css'
+import axios from "axios";
+import spotify_api from "../src/services/spotifyApi";
 
 function Card(props){
+    
 
     return(
         <>

@@ -1,6 +1,7 @@
 #card-container{ 
     background-color: var(--gray-components);
-    width: 186px;
+    /* width: 186px; */
+    width: 100%;
     height: 280px;
     border-radius: 16px;
     border:none;
@@ -12,7 +13,11 @@
 }
 
 #artist-image{
-    margin-top: 5%;
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    height: 50%;
+    object-fit: cover;
 }
 
 #artist-name{

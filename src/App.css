@@ -63,7 +63,9 @@ body {
   font-size: 20px;
   line-height: 24.2px;
 }
-.like-btn:hover{color: white;}
+.like-btn:hover{
+  color: white;
+}
 
 .logout-btn{ /*LOGOUT" */
   position: absolute;
@@ -88,14 +90,14 @@ body {
 }
 .artists-container{ /*AREA COM OS ARTISTAS*/
   box-sizing: border-box;
-  width: 966px;
+  /* width: 966px; */
   height: 602px;
   display: flex;
   flex-direction: column;
   justify-content:space-evenly;
 }
 .comp{ /*AREA DE COMPONENTES SEPARADA ENTRE BAIXO E EM CIMA*/
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
 }

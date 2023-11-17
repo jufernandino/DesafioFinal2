@@ -1,0 +1,63 @@
+/*CARACTERISTICAS GERAIS*/
+body { 
+    font-family: 'Inter', sans-serif;
+}
+:root {
+    --black: #111111;
+    --gray-text:#868686;
+    --gray-components:#3c3c3c;
+    --white-text: #FFFFFF;
+    --green:#3FE168;
+    background-color: var(--black);
+    color: var(--gray-text);
+}
+  
+.Register{ /*APLICATIVO GERAL*/
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    color: var(--white-text);
+}
+
+.Title{
+    margin-top: 227px;
+    width: 412px;
+    font-weight: 700;
+    size: 40px;
+    line-height: 48.41px;
+    text-align: center;
+}
+
+
+input{
+    height: 46px;
+    width: 454px;
+    background-color: var(--gray-components);
+    margin-top: 29px;
+    border: none;
+    color: var(--gray-text);
+    padding: 10px;
+}
+
+.BtnRegister{
+    width: 240px;
+    height: 45px;
+    border-radius:  30px;
+    background-color: var(--green);
+    color: var(--white-text);
+    border:none;
+    line-height: 19.36px;
+    size: 16px;
+    font-weight: 700;
+    margin-top: 35px;
+}
+
+.Login{
+    line-height: 19.36px;
+    size: 16px;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 35px ;
+}
+

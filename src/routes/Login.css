@@ -1,0 +1,76 @@
+/*CARACTERISTICAS GERAIS*/
+body { 
+    font-family: 'Inter', sans-serif;
+}
+:root {
+    --black: #111111;
+    --gray-text:#868686;
+    --gray-components:#3c3c3c;
+    --white-text: #FFFFFF;
+    background-color: var(--black);
+    color: var(--gray-text);
+}
+  
+.Login{ /*APLICATIVO GERAL*/
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    color: var(--white-text);
+}
+
+.Title{
+    margin-top: 227px;
+    line-height: 48.41px;
+    size: 40px;
+    font-weight: 700;
+}
+.SubTitle{
+    margin-top: 49px;
+    line-height: 43.57px;
+    size: 36px;
+    font-weight: 700;
+}
+
+input{
+    height: 46px;
+    width: 454px;
+    background-color: var(--gray-components);
+    margin-top: 29px;
+    border: none;
+    color: var(--gray-text);
+    padding: 10px;
+}
+
+.BtnLogin{
+    width: 240px;
+    height: 45px;
+    border-radius:  30px;
+    background-color: var(--white-text);
+    color: var(--black);
+    line-height: 19.36px;
+    size: 16px;
+    font-weight: 700;
+    margin-top: 35px;
+    border:none;
+}
+
+.Register{
+    line-height: 19.36px;
+    size: 16px;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 35px ;
+}
+
+.Teste{
+    width:200px;
+    display: flex;
+    flex-direction: inline;
+    justify-content: space-between;
+    line-height: 19.36px;
+    size: 16px;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 35px ;
+}

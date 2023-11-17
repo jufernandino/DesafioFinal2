@@ -1,0 +1,186 @@
+body { 
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+/*CARACTERISTICAS GERAIS*/
+:root {
+  --blue:#17A6E4;
+  --green:#3FE168;
+  --bg-black: #000000;
+  --gray:#CCCCCC; 
+  background-color: var(--bg-black);
+  color: var(--gray);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.playlistPage{ /*APLICATIVO GERAL*/ 
+  height: 100vh;
+  margin-left: 224px;
+  padding-left: 30px;
+  padding-right: 50px;
+  background:linear-gradient(to bottom,var(--blue),transparent 75%);
+  height: 100vh;
+}
+.area{  /*AREA PRINCIPAL*/
+  display:flex;
+  flex-direction: row;
+  padding-bottom: 50px;
+  padding-top:100px;
+}
+.image-playlist{ /*IMAGEM DA PLAYLIST*/
+  width:224px;
+  height: 224px;
+  background-image:url("./Imgs/img_Californication.jpg");
+  background-size: 224px 224px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 40px;
+  box-shadow: 0px 0px 50px rgb(73, 73, 73);
+}
+.name-playlist{
+  line-height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  color: white;
+  font-weight: 700;
+}
+.playlist-time{
+    color: rgb(200, 200, 200);
+}
+
+.middle-buttons{ /*BOTOES DO MEIO (CONTROLE DA PLAYLIST)*/
+  margin-top: 0px;
+  margin-bottom: 50px;
+  display: flex;
+}
+.play-button-box{
+  margin: 5px;
+  margin-left: 0px;
+  width: 74px;
+  height: 74px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.play-button{
+  border: none;
+  cursor: pointer;
+  width: 72px; 
+  height: 72px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='%233fe168'><path d='M0 0h48v48H0z' fill='none'></path><path d='M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z' fill='%233fe168' class='fill-000000'></path></svg>");
+  background-size: cover;
+}
+.play-button:hover{
+  width: 74px; 
+  height: 74px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='%2320e053'><path d='M0 0h48v48H0z' fill='none'></path><path d='M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z' fill='%2320e053' class='fill-000000 fill-3fe168'></path></svg>");
+}
+.favorite-playlist-button{
+  margin: 5px;
+  background-color: transparent;
+  border: none;
+  color: var(--gray);
+  cursor: pointer;
+}
+.favorite-playlist-button:hover{color: white;}
+.download-button{
+  margin: 5px;
+  background-color: transparent;
+  border: none;
+  color: var(--gray);
+  cursor: pointer;
+}
+.download-button:hover{color: white;}
+.more-options-button{
+  margin: 5px;
+  background-color: transparent;
+  border: none;
+  color: var(--gray);
+  cursor: pointer;
+}
+.more-options-button:hover{color: white;}
+.favorite-playlist-button .material-symbols-outlined,
+.download-button .material-symbols-outlined,
+.more-options-button .material-symbols-outlined {
+  font-size: 32px; /* Aumenta o tamanho dos ícones para 32 pixels */
+}
+
+
+.header-playlist{ /*CABEÇALHO PARA AREA EM QUE APARECE AS MUSICAS*/
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: gray;
+}
+.header-playlist-tittle{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.line-header{ /*LINHA SEPARANDO O CABEÇALHO*/
+  border-color: rgb(75, 75, 75); 
+  border-style: solid;
+  border-top: none;
+  height: 1px;
+  margin-bottom: 30px;
+}
+
+
+.playlist{/*AREA EM QUE APARECE AS MUSICAS*/
+  display: flex;
+  flex-direction: column;
+}
+.music{ /*MUSICAS*/
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  line-height: 60px;
+}
+.TITLE{ /*NOME DA MUSICA E DO ARTISTA*/
+  line-height:20px ;
+  display: flex;
+  flex-direction: inline;
+}
+.container-id{
+  display: flex;
+}
+.material-symbols-outlined {/*CARACTERES ESPECIAIS (FAVORITO E DELETAR)*/
+  margin: 5px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+.favorite-button { /*BOTAO DE FAVORITOS*/
+  position: relative;
+  background-color: transparent;
+  color: var(--gray);
+  border: none;
+  cursor: pointer;
+} 
+.favorite-button:hover{ /*MUDAR A COR DO BOTAO QUANDO PASSAR O MOUSE*/
+  color: #ffffff;
+}
+.delete-button { /*BOTAO DE DELETAR*/
+  background-color: transparent;
+  color: var(--gray);
+  border: none;
+  cursor: pointer;
+} 
+.delete-button:hover { /*MUDAR A COR DO BOTAO QUANDO PASSAR O MOUSE*/
+  color: #ffffff;
+}
+

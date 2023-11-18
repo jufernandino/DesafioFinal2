@@ -51,6 +51,7 @@ input{
     size: 16px;
     font-weight: 700;
     margin-top: 35px;
+    cursor: pointer;
 }
 
 .Login{

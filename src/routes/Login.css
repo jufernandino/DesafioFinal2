@@ -53,6 +53,11 @@ input{
     font-weight: 700;
     margin-top: 35px;
     border:none;
+    cursor: pointer;
+}
+
+a{
+    color: white;
 }
 
 .Register{
@@ -74,3 +79,4 @@ input{
     margin-top: 35px;
     margin-bottom: 35px ;
 }
+

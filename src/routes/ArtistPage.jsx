@@ -5,15 +5,15 @@ import axios from 'axios';
 import spotify_api from '../services/spotifyApi';
 import { Link } from "react-router-dom";
 
+
 //FUNÇÃO PARA A PÁGINA DE ARTISTA
 const ArtistPage = () => {
+  const [arrayImages, setArrayImages]= useState([])
+  const [token, setToken]= useState("")
 
   const handleClick=()=>{
 
   }
-
-
-  const [token, setToken]= useState("")
 
   const favoriteStyle = {
     color: 'white',
@@ -55,21 +55,17 @@ const ArtistPage = () => {
       const new_token = await getToken();
       setToken(new_token)
       let auxiliar
+      let arrayAuxiliar=[]
 
       for (let i = 0; i < artists_id.length; i++) {
         auxiliar= await getImage(token, artists_id[i]);
-        artists_images.push(auxiliar)
+        arrayAuxiliar.push(auxiliar)
       }
 
-      //Veja no console as urls da imagens dentro do array "artists_images"
-      if(artists_images.length!=0){
-        for (let i = 0; i < artists_images.length; i++) {
-          console.log(artists_images[i])
-        }
-      }
+      setArrayImages(arrayAuxiliar)
       
     })();
-  }, []);
+  }, [arrayImages]);
 
 
 
@@ -100,17 +96,17 @@ const ArtistPage = () => {
         <h1>Artistas</h1>
         <div className="artists-container"> {/*AREA DOS ARTISTAS*/}
           <div className='comp'> {/*CONTAINER COM OS CARDS DOS ARTISTAS*/}
-            <Card imageSrc="https://i.scdn.co/image/316e9e1d7a6b1c0a8e1fd3870daa74f4f9727ffd" artistName="Engenheiros do Havai"/>
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f17881139e6908629853e4ef667c" artistName="Cidade Negra"/>
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f178bc611be88d151416dba687c8" artistName="Capital Inicial"/>
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f1782b61503716c9cbb86f6a0658" artistName="Skank"/>
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f178c379b4361bcfb87f5bd72808" artistName="Paralamas de Sucesso"/>
+            <Card imageSrc={arrayImages[0]} artistName="Engenheiros do Havai"/>
+            <Card imageSrc={arrayImages[1]} artistName="Cidade Negra"/>
+            <Card imageSrc={arrayImages[2]} artistName="Capital Inicial"/>
+            <Card imageSrc={arrayImages[3]} artistName="Skank"/>
+            <Card imageSrc={arrayImages[4]} artistName="Paralamas de Sucesso"/>
 
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f178f751f527e2fb1fa37017e423" artistName="Lulu Santos"/>
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f1781313a3881791f8f2afd8611d" artistName="Cazuza"/>
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f178f25ba98f0de79121ec962369" artistName="Kid Abelha"/>
-            <Card imageSrc="https://i.scdn.co/image/ab6761610000f178fdb5a5730e0b84f8911055ff" artistName="Biquíni Cavadão"/>
-            <Card imageSrc="https://i.scdn.co/image/693ff944b53dfdf63c09fc13e600e9f9e126508b" artistName="O Rappa"/>
+            <Card imageSrc={arrayImages[5]} artistName="Lulu Santos"/>
+            <Card imageSrc={arrayImages[6]} artistName="Cazuza"/>
+            <Card imageSrc={arrayImages[7]} artistName="Kid Abelha"/>
+            <Card imageSrc={arrayImages[8]} artistName="Biquíni Cavadão"/>
+            <Card imageSrc={arrayImages[9]}  artistName="O Rappa"/>
           </div>
         </div> {/* FIM AREA DOS ARTISTAS*/}
       </div> {/*FIM AREA PRINCIPAL*/}

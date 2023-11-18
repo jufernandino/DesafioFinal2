@@ -27,11 +27,11 @@ const LoginPage = () => {
             </div>
             {/* LOCAL PARA LOGAR O EMAIL */}
             <div className="Email">
-                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                <input type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
             </div>
             {/* LOCAL PARA LOGAR A SENHA */}
             <div className="Password">
-                <input type="text" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                <input type="text" placeholder="Senha" value={password} onChange={(e)=>setPassword(e.target.value)}/>
             </div>
             {/* BOTÃO PARA ENTRAR NA CONTAR */}
             <div>    

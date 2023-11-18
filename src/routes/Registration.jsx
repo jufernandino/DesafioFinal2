@@ -21,7 +21,7 @@ const RegistrationPage = () => {
         localStorage.setItem(userName, value3)
     }
     
-    //REQUISIÇÃO DE CRIAÇÃO DE NOVO USUÁRIO
+    // REQUISIÇÃO DE CRIAÇÃO DE NOVO USUÁRIO
     const createNewUser= async ()=> {  
         try {
             await api.post("/users", {

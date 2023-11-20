@@ -6,6 +6,11 @@ import axios from "axios";
 import api from "../services/api";
 import Alert from "@mui/material/Alert";
 
+import Chip from '@mui/material/Chip';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import HttpsIcon from '@mui/icons-material/Https';
+
 //FUNÇÃO PARA PAGINA DE REGISTRO DE CONTA
 const RegistrationPage = () => {
     const [newEmail, setEmail]= useState('')
@@ -47,15 +52,17 @@ const RegistrationPage = () => {
             {/* LOCAL PARA CADASTRAR O EMAIL */}
             <div className="newEmail">
                 <input type="text" value={newEmail} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+                <Chip id="icons" icon={<MailOutlineIcon />} />
             </div>
             {/* LOCAL PARA CRIAR A SENHA */}
             <div className="newPassword">
                 <input type="text" value={newPassword} placeholder="Crie uma senha" onChange={(e)=>setPassword(e.target.value)}/>
+                <Chip id="icons" icon={<HttpsIcon />} />
             </div>
             {/* LOCAL PARA CADASTRAR O NOME */}
             <div className="Name">
-                <input type="text" value={userName} placeholder="Como devemos chamar você?" onChange={(e)=>setName(e.target.value)}/>
-                
+               <input type="text" value={userName} placeholder="Como devemos chamar você?" icon={<AccountCircleIcon />} onChange={(e)=>setName(e.target.value)}/> 
+               <Chip id="icons" icon={<AccountCircleIcon />} />
             </div>
             {/* BOTÃO PARA SALVAR A CONTAR */}
             <div>    

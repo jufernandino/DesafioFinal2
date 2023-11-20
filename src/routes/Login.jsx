@@ -4,12 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import './Login.css'
 import axios from "axios";
 import api from "../services/api";
+import Alert from "@mui/material/Alert";
 
 //FUNÇÃO PARA A PÁGINA DE LOGIN
 const LoginPage = () => {
     const [email, setEmail]= useState('')
     const [password, setPassword] = useState()
     const navigate= useNavigate('')
+    const [error, setError] = useState("");
 
     //FUNÇÃO COM A REQUISIÇÃO PARA LOGAR UM USUÁRIO
     const login= async ()=>{
@@ -24,7 +26,9 @@ const LoginPage = () => {
             return navigate('home')
             
         } catch (error) {
-            console.log('Login não efetuado' + error)
+            console.log('Login não efetuado' + error);
+            console.log(error.response.data);
+            setError(error.response.data);
         }
     }
 
@@ -56,6 +60,8 @@ const LoginPage = () => {
             <div className="Register">
                 <p>NÃO TEM UMA CONTA? <Link to="register">INCREVA-SE</Link> </p>
             </div>
+            {/* AVISO DE ERRO */}
+            {error ? <Alert variant="filled" severity="error">{error}</Alert> : <div /> }
 
         </div> 
     );

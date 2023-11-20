@@ -1,20 +1,33 @@
 import React from "react";
 import { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Login.css'
+import axios from "axios";
+import api from "../services/api";
 
 //FUNÇÃO PARA A PÁGINA DE LOGIN
 const LoginPage = () => {
-    //FUNÇÃO PARA EMAIL
-    const [email, setEmail]= useState()
-    //FUNÇÃO PARA SENHA
-     const [password, setPassword] = useState()
+    const [email, setEmail]= useState('')
+    const [password, setPassword] = useState()
+    const navigate= useNavigate('')
 
-    //FUNÇÃO PARA SUBMETER O EMAIL
-    const SubmitEmail =(email, value, password, value2) => {
-        localStorage.setItem(email, value)
-        localStorage.setItem(password, value2)
+    //FUNÇÃO COM A REQUISIÇÃO PARA LOGAR UM USUÁRIO
+    const login= async ()=>{
+        try {  
+            await api.post('/users/login', 
+            {
+              email: email,
+              password: password, 
+            })   
+
+            console.log('Login efetuado')
+            return navigate('home')
+            
+        } catch (error) {
+            console.log('Login não efetuado' + error)
+        }
     }
+
 
     return (
         <div className="Login"> 
@@ -35,7 +48,7 @@ const LoginPage = () => {
             </div>
             {/* BOTÃO PARA ENTRAR NA CONTAR */}
             <div>    
-                <button className="BtnLogin" onClick={()=> SubmitEmail("ls_email", email, "ls_password", password) }>
+                <button className="BtnLogin" onClick={login}>
                         ENTRAR
                     </button> 
             </div>
@@ -43,13 +56,6 @@ const LoginPage = () => {
             <div className="Register">
                 <p>NÃO TEM UMA CONTA? <Link to="register">INCREVA-SE</Link> </p>
             </div>
-            
-            {/* Provisório, só para testa se esta funcionando */}
-            <div className="Teste">
-                <div> <Link to="playlist">PLAYLIST  </Link> </div>
-                <div> <Link to="home"> HOME</Link> </div>
-            </div>
-
 
         </div> 
     );

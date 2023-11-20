@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     element: <ArtistPage />
   },
   {
-    path: "playlist",
+    path: "/home/playlist",
     element: <PlaylistPage />
   },
 ])

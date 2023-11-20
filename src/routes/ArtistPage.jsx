@@ -3,17 +3,15 @@ import './ArtistPage.css'
 import Card from '/components/Card';
 import axios from 'axios';
 import spotify_api from '../services/spotifyApi';
-import { Link } from "react-router-dom";
+import api from '../services/api';
+import { Link, useNavigate } from "react-router-dom";
 
 
 //FUNÇÃO PARA A PÁGINA DE ARTISTA
 const ArtistPage = () => {
   const [arrayImages, setArrayImages]= useState([])
   const [token, setToken]= useState("")
-
-  const handleClick=()=>{
-
-  }
+  const navigate= useNavigate()
 
   const favoriteStyle = {
     color: 'white',
@@ -22,7 +20,6 @@ const ArtistPage = () => {
   const client_id= 'ff9df290dfae488ca3cf4ecc7a643239';
   const client_secret= '1ed7d01b9380442d8cbd5e66e1fd7750';
   const artists_id=[ "0GNq4xh8uFCyihPurnunf7","4cx31cxKTg5L8blZE24qfZ", "4Z0yuwHVJBROVZqFpTIr0d", "4C4kpaAdp6aKSkguw40SsU", "7EM9m7HOXxVgP9oEpDDv70", "0A1oy7PC7fdzURgaLaWkL1", "1PwOU6fFbmaGkK3wkbb8fU", "4bOZtegYNmYOe3gMgPtt0H", "7E5dcvoiZra9wwBuXYAYTw", "1A5QJAC1vdhbhPE25Q0x0f" ]
-  let artists_images= []
 
   const getToken= async ()=>{
     try {
@@ -50,6 +47,17 @@ const ArtistPage = () => {
     }
   }
 
+  const logOut= async ()=>{
+    try {
+      await api.post('/users/logout')
+      console.log('Logout efetuado')
+      return navigate('/')
+
+    } catch (error) {
+      console.log('Logout não efetuado')
+    }
+  }
+
   useEffect(() => {
     (async () => {
       const new_token = await getToken();
@@ -63,9 +71,8 @@ const ArtistPage = () => {
       }
 
       setArrayImages(arrayAuxiliar)
-      
     })();
-  }, [arrayImages]);
+  }, []);
 
 
 
@@ -81,11 +88,11 @@ const ArtistPage = () => {
           Artistas
         </button>
         <button className='like-btn'>
-          <span style = {favoriteStyle} className="material-symbols-outlined">
-            favorite&ensp;</span>
-          Músicas Curtidas
+            <span style = {favoriteStyle} className="material-symbols-outlined">
+              favorite&ensp;</span>
+            <Link to="/home/playlist">Músicas Curtidas</Link>
         </button>
-        <button className='logout-btn' onClick ={handleClick}>
+        <button className='logout-btn' onClick = {logOut}>
           <span className="material-symbols-outlined">
             logout&ensp;</span>
           Logout

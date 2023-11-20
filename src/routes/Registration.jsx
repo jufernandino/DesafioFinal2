@@ -7,21 +7,11 @@ import api from "../services/api";
 
 //FUNÇÃO PARA PAGINA DE REGISTRO DE CONTA
 const RegistrationPage = () => {
-    //FUNÇÃO PARA EMAIL
     const [newEmail, setEmail]= useState('')
-    //FUNÇÃO PARA SENHA
     const [newPassword, setPassword] = useState('')
-    //FUNÇÃO PARA NOME
     const [userName, setName] = useState('')
     
-    //FUNÇÃO PARA SUBMETER O EMAIL
-    const SaveRegister =(newEmail, value, newPassword, value2, userName, value3) => {
-        localStorage.setItem(newEmail, value)
-        localStorage.setItem(newPassword, value2)
-        localStorage.setItem(userName, value3)
-    }
-    
-    // REQUISIÇÃO DE CRIAÇÃO DE NOVO USUÁRIO
+    //FUNÇÃO COM A REQUISIÇÃO DE CRIAÇÃO DE NOVO USUÁRIO
     const createNewUser= async ()=> {  
         try {
             await api.post("/users", {
@@ -31,17 +21,13 @@ const RegistrationPage = () => {
                 role: "user",
                 })
             
-                console.log('Requisição concluida com sucesso')
+                console.log('Novo usuário criado')
         } catch (error) {
-            console.log('Falha na requisição' + error)
+            console.log('Falha na criação do novo usuário ' + error)
         }
     }
     
 
-    //FUNÇÃO EXECUTADA AO CLICAR NO BOTÃO DE CADASTRO
-    const Cadastrar= async ()=>{
-        await createNewUser()
-    }
     return (
 
         <div className="Register"> 
@@ -65,7 +51,7 @@ const RegistrationPage = () => {
             </div>
             {/* BOTÃO PARA SALVAR A CONTAR */}
             <div>    
-                <button className="BtnRegister" onClick={()=> {Cadastrar()} }> CADASTRAR</button> 
+                <button className="BtnRegister" onClick={createNewUser}> CADASTRAR</button> 
             </div>
             {/* LOCAL PARA REGISTRAR UMA NOVA CONTA */}
             <div className="Login">

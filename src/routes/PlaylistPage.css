@@ -38,7 +38,7 @@ h1 {
 .image-playlist{ /*IMAGEM DA PLAYLIST*/
   width:224px;
   height: 224px;
-  background-image:url("./Imgs/img_Californication.jpg");
+  background-image:url("../Imgs/img_Californication.jpg");
   background-size: 224px 224px;
   background-repeat: no-repeat;
   background-position: center;

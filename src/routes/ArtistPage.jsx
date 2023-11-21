@@ -2,7 +2,6 @@ import { React, useState, useEffect } from 'react'
 import './ArtistPage.css'
 import Card from '/components/Card';
 import axios from 'axios';
-import spotify_api from '../services/spotifyApi';
 import api from '../services/api';
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,40 +9,32 @@ import { Link, useNavigate } from "react-router-dom";
 //FUNÇÃO PARA A PÁGINA DE ARTISTA
 const ArtistPage = () => {
   const [arrayImages, setArrayImages]= useState([])
-  const [token, setToken]= useState("")
   const navigate= useNavigate()
 
   const favoriteStyle = {
     color: 'white',
   }
 
-  const client_id= 'ff9df290dfae488ca3cf4ecc7a643239';
-  const client_secret= '1ed7d01b9380442d8cbd5e66e1fd7750';
-  const artists_id=[ "0GNq4xh8uFCyihPurnunf7","4cx31cxKTg5L8blZE24qfZ", "4Z0yuwHVJBROVZqFpTIr0d", "4C4kpaAdp6aKSkguw40SsU", "7EM9m7HOXxVgP9oEpDDv70", "0A1oy7PC7fdzURgaLaWkL1", "1PwOU6fFbmaGkK3wkbb8fU", "4bOZtegYNmYOe3gMgPtt0H", "7E5dcvoiZra9wwBuXYAYTw", "1A5QJAC1vdhbhPE25Q0x0f" ]
+  const artistsNames= ['Engenheiros do Hawaii', 'Cidade Negra', 'Capital Inicial', 'Skank', 'Paralamas do Sucesso', 'Lulu Santos', 'Cazuza', 'Kid Abelha', 'Biquini Cavadão', 'O Rappa']
 
-  const getToken= async ()=>{
-    try {
-            const response= await axios.post("https://accounts.spotify.com/api/token", 
-            'grant_type=client_credentials&client_id=' + client_id+ '&client_secret='+client_secret, {
-        });
-        return response.data.access_token
-    }catch (error) {
-        console.log('Erro na requisição do token '+ error)
+  const getImageUrl= (array, artistName) => {
+    let object= null
+    for(let i=0; i<array.length;i++){
+      if(array[i].name == artistName){
+        object=array[i]
+        break
+      }
     }
+
+    return object.image
   }
 
-  const getImage= async (token, id)=>{
+  const getArtists= async ()=>{
     try {
-        const response= await spotify_api.get("/v1/artists/" + id,  
-            {
-              headers: {
-                  'Authorization': 'Bearer ' + token,
-              }
-            }, )
-  
-        return response.data.images[2].url
+      const response= await api.get('/artists')
+      return response.data
     } catch (error) {
-        console.log('Erro na requisição de imagem' + error)
+      console.log('Falha na requisição')
     }
   }
 
@@ -60,17 +51,15 @@ const ArtistPage = () => {
 
   useEffect(() => {
     (async () => {
-      const new_token = await getToken();
-      setToken(new_token)
-      let auxiliar
-      let arrayAuxiliar=[]
-
-      for (let i = 0; i < artists_id.length; i++) {
-        auxiliar= await getImage(token, artists_id[i]);
-        arrayAuxiliar.push(auxiliar)
+      const objectsArray= await getArtists()
+      let auxArray= []
+      let aux=''
+      for(let i=0; i<artistsNames.length; i++){
+        aux= getImageUrl(objectsArray, artistsNames[i])
+        auxArray.push(aux)
       }
+      setArrayImages(auxArray)
 
-      setArrayImages(arrayAuxiliar)
     })();
   }, []);
 

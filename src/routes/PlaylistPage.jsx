@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Music from "/components/music";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import './PlaylistPage.css'
+import api from '../services/api';
 
 function Playlist(){
+  const [artist, setArtist]= useState({})
+  const {id}= useParams()
 
   //ARRAY COM LISTA DAS MUSICAS
   const [musics, setMusics] = useState([
@@ -12,7 +15,8 @@ function Playlist(){
       title: "The Zephyr Song",
       artist: "Red Hot Chili Pepers",
       album: "By The Way",
-      favorite: false,},
+      favorite: false,
+    },
     {
       id:2,
       title: "Talk",
@@ -36,6 +40,16 @@ function Playlist(){
     },
   ]);
 
+  const getArtistsDetails= async() =>{
+    try {
+      const response= await api.get(`/artists/${id}`)
+      return response.data
+
+    } catch (error) {
+      console.log('Falha na requisição')
+    }
+  }
+
   //FUNÇÃO PARA REMOVER UMA MUSICA DA PLAYLIST
   const remove = (id) => {
     const newMusic = [...musics]
@@ -54,18 +68,29 @@ function Playlist(){
     setMusics(newMusic);
   };
   
+  useEffect( ()=>{
+    ( async()=>{
+      
+      const auxArtist = await getArtistsDetails()
+      setArtist(auxArtist)
+
+    })()  
+  }, [])
+
   return ( 
     //APLICATIVO GERAL
     <div className="playlistPage"> 
       {/*AREA PRINCIPAL*/}
       <div className='area'>
             {/*IMAGEM DA PLAYLIST*/}
-            <div className='image-playlist'></div>
+            <div className='image-playlist'>
+              { artist.image && <img id='artistImage' src={artist.image} alt="Imagem do artist" />}
+            </div>
             {/*NOME E INFORMAÇÕES DA PLAYLIST*/}
             <div className="name-playlist">
                 <p>Playlist</p>
                 <h1>Daily Mix 1</h1>
-                <p>Red Hot Chilli Peppers, Coldplay e mais</p>
+                <p>{artist.name}</p>
                 <p><span>Spotify - 50 músicas</span> <span className='playlist-time' >1h 7min</span></p>
             </div>
             

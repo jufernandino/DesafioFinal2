@@ -1,27 +1,26 @@
-/*CARACTERISTICAS GERAIS*/
 body { 
     font-family: 'Inter', sans-serif;
-}
+  }
+
 :root {
-    --black: #111111;
+    --red: #E42D2D;
     --gray-text:#868686;
     --gray-components:#3c3c3c;
     --white-text: #FFFFFF;
     --green:#3FE168;
-    background-color: var(--black);
     color: var(--gray-text);
 }
   
-.Register{ /*APLICATIVO GERAL*/
+.Modal-Email{ /*JANELA GERAL*/
     display:flex;
     flex-direction: column;
     justify-content:center;
     align-items:center;
     color: var(--white-text);
+    margin-top: 29px;
 }
 
-.Title{
-    margin-top: 227px;
+#NewEmail{ /*TITULO*/
     width: 412px;
     font-weight: 700;
     size: 40px;
@@ -29,7 +28,7 @@ body {
     text-align: center;
 }
 
-input{
+input{ /*LOCAL DE INSERIR NOVO EMAIL*/
     height: 46px;
     width: 454px;
     background-color: var(--gray-components);
@@ -39,8 +38,8 @@ input{
     padding: 10px;
 }
 
-.BtnRegister{
-    width: 240px;
+.Confirm{ /*BOTAO DE CONFIRMAR*/
+    width: 150px;
     height: 45px;
     border-radius:  30px;
     background-color: var(--green);
@@ -49,18 +48,26 @@ input{
     line-height: 19.36px;
     size: 16px;
     font-weight: 700;
-    margin-top: 35px;
+    margin-top: 42px;
     cursor: pointer;
 }
-
-.Login{
+.Cancel{ /*BOTAO DE CANCELAR*/
+    width: 150px;
+    height: 45px;
+    border-radius:  30px;
+    background-color: var(--red);
+    color: var(--white-text);
+    border:none;
     line-height: 19.36px;
     size: 16px;
     font-weight: 700;
-    margin-top: 35px;
-    margin-bottom: 35px ;
+    margin-top: 42px;
+    cursor: pointer;
+    margin-right: 23px;
 }
-#icons{
+
+
+#icons{ /*ICONE DO EMAIL*/
     margin-left: -50px;
     background-color: #3c3c3c00;
 }

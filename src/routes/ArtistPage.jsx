@@ -4,6 +4,7 @@ import Card from '/components/Card';
 import axios from 'axios';
 import api from '../services/api';
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from '/components/Navbar';
 
 
 //FUNÇÃO PARA A PÁGINA DE ARTISTA
@@ -38,17 +39,6 @@ const ArtistPage = () => {
     }
   }
 
-  const logOut= async ()=>{
-    try {
-      await api.post('/users/logout')
-      console.log('Logout efetuado')
-      return navigate('/')
-
-    } catch (error) {
-      console.log('Logout não efetuado')
-    }
-  }
-
   useEffect(() => {
     (async () => {
       const objectsArray= await getArtists()
@@ -69,26 +59,9 @@ const ArtistPage = () => {
     //APLICATIVO GERAL
     <div className='artistPage'>
       {/*BARRA LATERAL*/}
-      <div className='left-container'>
-        <h1 className='title'>iSpotify ®</h1>
-        <button className='artist-btn'>
-          <span className="material-symbols-outlined">
-            mode_standby&ensp;</span>
-          Artistas
-        </button>
-        <button className='like-btn'>
-            <span style = {favoriteStyle} className="material-symbols-outlined">
-              favorite&ensp;</span>
-            <Link to="/home/playlist">Músicas Curtidas</Link>
-        </button>
-        <button className='logout-btn' onClick = {logOut}>
-          <span className="material-symbols-outlined">
-            logout&ensp;</span>
-          Logout
-        </button>
-      </div>
+      <Navbar />
       {/*AREA PRINCIPAL*/}
-      <div className='main-container'>
+      <div className='main-container-artist'>
         <h1>Artistas</h1>
         <div className="artists-container"> {/*AREA DOS ARTISTAS*/}
           <div className='comp'> {/*CONTAINER COM OS CARDS DOS ARTISTAS*/}

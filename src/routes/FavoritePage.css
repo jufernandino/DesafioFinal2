@@ -8,7 +8,7 @@ h1 {
 
 /*CARACTERISTICAS GERAIS*/
 :root {
-  --blue:#17A6E4;
+  --dark-blue:#5E44FF;
   --green:#3FE168;
   --bg-black: #000000;
   --gray:#CCCCCC; 
@@ -21,24 +21,25 @@ h1 {
   box-sizing: border-box;
 }
 
-.playlistPage{ /*APLICATIVO GERAL*/ 
+.favoritePage{ /*APLICATIVO GERAL*/ 
   height: 100vh;
   margin-left: 263px;
   padding-left: 30px;
   padding-right: 50px;
-  background:linear-gradient(to bottom,var(--blue),transparent 75%);
+  background:linear-gradient(to bottom,var(--dark-blue),transparent 75%);
   height: 100vh;
 }
-.area{  /*AREA PRINCIPAL*/
+.main{  /*AREA PRINCIPAL*/
   display:flex;
   flex-direction: row;
   padding-bottom: 50px;
   padding-top:100px;
 }
 
-.image-playlist{ /*CONTAINER DA IMAGEM DA PLAYLIST*/
+.image-favorites{ /*CONTAINER DA IMAGEM DA PLAYLIST*/
   width:224px;
   height: 224px;
+  background-image:url("./Imgs/images_favoritos.jpg");
   background-size: 224px 224px;
   background-repeat: no-repeat;
   background-position: center;
@@ -46,13 +47,7 @@ h1 {
   box-shadow: 0px 0px 50px rgb(73, 73, 73);
 }
 
-#artistImage{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.name-playlist{
+.name-favPlaylist{
   line-height: 40px;
   display: flex;
   flex-direction: column;
@@ -60,9 +55,6 @@ h1 {
   justify-content: end;
   color: white;
   font-weight: 700;
-}
-.playlist-time{
-    color: rgb(200, 200, 200);
 }
 
 .middle-buttons{ /*BOTOES DO MEIO (CONTROLE DA PLAYLIST)*/
@@ -92,21 +84,6 @@ h1 {
   height: 74px;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='%2320e053'><path d='M0 0h48v48H0z' fill='none'></path><path d='M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z' fill='%2320e053' class='fill-000000 fill-3fe168'></path></svg>");
 }
-.favorite-playlist-button{
-  margin: 5px;
-  background-color: transparent;
-  border: none;
-  color: var(--gray);
-  cursor: pointer;
-}
-.favorite-playlist-button:hover{color: white;}
-.download-button{
-  margin: 5px;
-  background-color: transparent;
-  border: none;
-  color: var(--gray);
-  cursor: pointer;
-}
 .download-button:hover{color: white;}
 .more-options-button{
   margin: 5px;
@@ -115,22 +92,20 @@ h1 {
   color: var(--gray);
   cursor: pointer;
 }
-.more-options-button:hover{color: white;}
-.favorite-playlist-button .material-symbols-outlined,
-.download-button .material-symbols-outlined,
-.more-options-button .material-symbols-outlined {
+
+.download-button .material-symbols-outlined {
   font-size: 32px; /* Aumenta o tamanho dos ícones para 32 pixels */
 }
 
 
-.header-playlist{ /*CABEÇALHO PARA AREA EM QUE APARECE AS MUSICAS*/
+.header-favPlaylist{ /*CABEÇALHO PARA AREA EM QUE APARECE AS MUSICAS*/
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   color: gray;
 }
-.header-playlist-tittle{
+.header-favPlaylist-tittle{
   display:flex;
   flex-direction: row;
   justify-content: space-between;
@@ -145,7 +120,7 @@ h1 {
 }
 
 
-.playlist{/*AREA EM QUE APARECE AS MUSICAS*/
+.favPlaylist{/*AREA EM QUE APARECE AS MUSICAS*/
   display: flex;
   flex-direction: column;
 }
@@ -170,16 +145,6 @@ h1 {
   'wght' 400,
   'GRAD' 0,
   'opsz' 24
-}
-.favorite-button { /*BOTAO DE FAVORITOS*/
-  position: relative;
-  background-color: transparent;
-  color: var(--gray);
-  border: none;
-  cursor: pointer;
-} 
-.favorite-button:hover{ /*MUDAR A COR DO BOTAO QUANDO PASSAR O MOUSE*/
-  color: #ffffff;
 }
 .delete-button { /*BOTAO DE DELETAR*/
   background-color: transparent;

@@ -10,6 +10,8 @@ import LoginPage from "./routes/Login";
 import RegistrationPage from "./routes/Registration";
 import ArtistPage from "./routes/ArtistPage";
 import PlaylistPage from "./routes/PlaylistPage";
+import MyAccount from "./routes/MyAccount";
+import FavoritePage from "./routes/FavoritePage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
   {
     path: "/home/playlist/:id",
     element: <PlaylistPage />
+  },
+  {
+    path: "myaccount",
+    element: <MyAccount />
+  },
+  {
+    path: "favorites",
+    element: <FavoritePage />
   },
 ])
 

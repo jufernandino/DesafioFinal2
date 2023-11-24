@@ -1,0 +1,114 @@
+/*CARACTERISTICAS GERAIS*/
+body { 
+    font-family: 'Inter', sans-serif;
+  }
+  :root {
+    --black: #000000;
+    --gray-light:#CCCCCC; 
+    color: var(--gray);
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .left-container{ /*BARRA LATERAL*/
+    width: 263px;
+    height: 909px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--black);
+    position: absolute;
+    align-items:flex-start;
+  }
+
+  .SpotifyTitle{ /*TITULO SPOTIFY*/
+    color: var(--gray-light);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48.41px;
+    margin-top: 85px;
+    margin-left: 37px;
+  }
+
+  .artist-btn{ /*BOTÃO "ARTISTAS" */
+    position: absolute;
+    margin-top: 160px;
+    margin-left: 86px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-light);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24.2px;
+  }
+  .artist-btn a{
+    text-decoration: none;
+    color: var(--gray-light);
+  }
+  .artist-btn:hover{
+    color: white;
+  }
+
+  
+  .like-btn{ /*BOTÃO "MÚSICAS CURTIDAS" */
+    position: absolute;
+    margin-top: 204px;
+    margin-left: 27px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-light);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24.2px;
+  }
+  .like-btn a{
+    text-decoration: none;
+    color: var(--gray-light);
+  }
+  .like-btn:hover{
+    color: white;
+  }
+
+  
+  .account-btn{ /*BOTÃO PARA MINHA CONTA" */
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 51px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-light);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24.2px;
+  }
+  .account-btn a{
+    text-decoration: none;
+    color: var(--gray-light);
+  }
+  .account-btn:hover{
+    color: white;
+  }
+
+  .logout-btn{ /*LOGOUT" */
+    position: absolute;
+    margin-top: 865px;
+    margin-left: 65px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-light);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24.2px;
+  }
+  .logout-btn:hover{color: white;}
+
+  .link{
+    color: var(--gray-light);
+  }
+  .link:hover{color: white;}

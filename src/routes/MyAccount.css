@@ -1,27 +1,32 @@
 /*CARACTERISTICAS GERAIS*/
 body { 
     font-family: 'Inter', sans-serif;
-}
-:root {
-    --black: #111111;
+  }
+  :root {
     --gray-text:#868686;
-    --gray-components:#3c3c3c;
-    --white-text: #FFFFFF;
+    --gray-components:#181818;
+    --gray-bg:#111111;
     --green:#3FE168;
-    background-color: var(--black);
-    color: var(--gray-text);
-}
-  
-.Register{ /*APLICATIVO GERAL*/
+    --white-text: #FFFFFF;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .myAccountPage{ 
+    width: 1440px;
+    height: 909px;
+    background-color: var(--gray-bg);
     display:flex;
     flex-direction: column;
-    justify-content:center;
     align-items:center;
     color: var(--white-text);
 }
 
-.Title{
-    margin-top: 227px;
+.myAccount{
+    margin-top: 286px;
     width: 412px;
     font-weight: 700;
     size: 40px;
@@ -39,7 +44,7 @@ input{
     padding: 10px;
 }
 
-.BtnRegister{
+.BtnEmail{
     width: 240px;
     height: 45px;
     border-radius:  30px;
@@ -49,18 +54,21 @@ input{
     line-height: 19.36px;
     size: 16px;
     font-weight: 700;
-    margin-top: 35px;
+    margin-top: 42px;
     cursor: pointer;
 }
 
-.Login{
+.BtnPassword{
+    width: 240px;
+    height: 45px;
+    border-radius:  30px;
+    background-color: var(--green);
+    color: var(--white-text);
+    border:none;
     line-height: 19.36px;
     size: 16px;
     font-weight: 700;
-    margin-top: 35px;
-    margin-bottom: 35px ;
+    margin-top: 15px;
+    cursor: pointer;
 }
-#icons{
-    margin-left: -50px;
-    background-color: #3c3c3c00;
-}
+

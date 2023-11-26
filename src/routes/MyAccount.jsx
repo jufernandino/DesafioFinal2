@@ -12,12 +12,12 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 //FUNÇÃO PARA A PÁGINA MINHA CONTA
 const MyAccount = () => {
-  const [email, setemail] = useState(getUserEmail());
+  const [email, setEmail] = useState("");
   const [senha, setsenha] = useState("");
+  const [name, setName]= useState("")
   const [openModalEmail, setOpenModalEmail] = useState(false)
   const [openModalPass, setOpenModalPass] = useState(false)
-  let name = getUserName(); 
-
+  
   async function getUserName() {
     try {
       const response = await api.get('/users/user')
@@ -36,6 +36,17 @@ const MyAccount = () => {
       console.log('Falha na requisição do email')
     }
   }
+
+  useEffect(()=>{
+    ( async ()=>{
+      
+      const auxName= await getUserName()
+      const auxEmail= await getUserEmail()
+      setName(auxName)
+      setEmail(auxEmail)
+
+    })()
+  }, [])
   
   return (
     //APLICATIVO GERAL
@@ -52,7 +63,7 @@ const MyAccount = () => {
         </div>
         {/* LOCAL QUE APARECE O EMAIL DO USUARIO */}
         <div className="Email">
-          <input type="text" value={email} placeholder={email} onChange={(e)=>setemail(e.target.value)}/>
+          <input type="text" value={email} placeholder={email} onChange={(e)=>setEmail(e.target.value)}/>
           <Chip id="icons" icon={<MailOutlineIcon />} />
         </div>
         {/* BOTÃO PARA TROCAR EMAIL */}

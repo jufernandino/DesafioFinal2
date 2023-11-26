@@ -11,35 +11,7 @@ function Playlist(){
   const {id}= useParams()
 
   //ARRAY COM LISTA DAS MUSICAS
-  const [musics, setMusics] = useState([
-    {id:1,
-      title: "The Zephyr Song",
-      artist: "Red Hot Chili Pepers",
-      album: "By The Way",
-      favorite: false,
-    },
-    {
-      id:2,
-      title: "Talk",
-      artist: "Coldplay",
-      album: "X&Y",
-      favorite: false,
-    },
-    {
-      id:3,
-      title: "Cidade Negra",
-      artist: "Firmamento",
-      album: "Cidade Negra Acústico MTV",
-      favorite: false,
-    },
-    {
-      id:4,
-      title: "Clocks",
-      artist: "Coldplay",
-      album: "A Rush of Blood to the Head",
-      favorite: false,
-    },
-  ]);
+  const [musics, setMusics] = useState([]);
 
   const getArtistsDetails= async() =>{
     try {
@@ -61,13 +33,32 @@ function Playlist(){
   };
 
   //FUNÇÃO PARA ADICIONAR UMA MUSICA AOS FAVORITOS 
-  const favorite = (id) => {
+  const favorite = async(id) => {
     const newMusic = [...musics]
     newMusic.map((music) =>
       music.id === id ? (music.favorite = !music.favorite) : music
     );
     setMusics(newMusic);
+    await setUserMusics(id);
   };
+
+  const getArtistSongs= async()=>{
+    try {
+      const response= await api.get(`/songs/artist/${id}`)
+      return response.data
+    } catch (error) {
+      console.log("Erro na requisição de músicas " + error)
+    }
+  }
+
+  const setUserMusics= async(music_id)=>{
+    try {
+      await api.post(`/users-songs/${music_id}`)
+    } catch (error) {
+      console.log('Erro na requisição ' + error)
+    }
+  }
+
   
   useEffect( ()=>{
     ( async()=>{
@@ -75,8 +66,15 @@ function Playlist(){
       const auxArtist = await getArtistsDetails()
       setArtist(auxArtist)
 
+      const auxMusics= await getArtistSongs()
+      const auxMusics2= auxMusics.map((music, index)=>{
+        return { ...music, favorite: false, list_number: index+1}
+      })
+      setMusics(auxMusics2)
+
     })()  
   }, [])
+
 
   return ( 
     //APLICATIVO GERAL
@@ -91,10 +89,8 @@ function Playlist(){
               </div>
               {/*NOME E INFORMAÇÕES DA PLAYLIST*/}
               <div className="name-playlist">
-                  <p>Playlist</p>
-                  <h1>Daily Mix 1</h1>
-                  <p>{artist.name}</p>
-                  <p><span>Spotify - 50 músicas</span> <span className='playlist-time' >1h 7min</span></p>
+                  <p>ARTISTA</p>
+                  <p id='artist_name'>{artist.name}</p>
               </div>
               
         </div>
@@ -118,7 +114,7 @@ function Playlist(){
         {/*CABEÇALHO PARA AREA EM QUE APARECE AS MUSICAS*/}
         <div className="header-playlist">
           <div className='header-playlist-tittle'> <span className="material-symbols-outlined"> numbers </span> <h4> TÍTULO </h4> </div>
-          <h4>ÁLBUM</h4>
+          <h4>Gênero</h4>
           <span className="material-symbols-outlined"> schedule </span>
         </div>
 

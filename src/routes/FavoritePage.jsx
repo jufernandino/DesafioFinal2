@@ -7,51 +7,48 @@ import api from '../services/api';
 import Navbar from '/components/Navbar';
 
 function FavoritePlaylist(){
-  const [artist, setArtist]= useState({})
-  const {id}= useParams()
-
-  //ARRAY COM LISTA DAS MUSICAS
-  const [musics, setMusics] = useState([
-    {id:1,
-      title: "The Zephyr Song",
-      artist: "Red Hot Chili Pepers",
-      album: "By The Way",
-      favorite: false,
-    },
-    {
-      id:2,
-      title: "Talk",
-      artist: "Coldplay",
-      album: "X&Y",
-      favorite: false,
-    },
-    {
-      id:3,
-      title: "Cidade Negra",
-      artist: "Firmamento",
-      album: "Cidade Negra Acústico MTV",
-      favorite: false,
-    },
-    {
-      id:4,
-      title: "Clocks",
-      artist: "Coldplay",
-      album: "A Rush of Blood to the Head",
-      favorite: false,
-    },
-  ]);
-
+  const [favoriteMusics, setFavoriteMusics]=useState([])
 
   //FUNÇÃO PARA REMOVER UMA MUSICA DA PLAYLIST
   const remove = (id) => {
-    const newMusic = [...musics]
+    const newMusic = [...favoriteMusics]
     const filteredMusics = newMusic.filter(music => 
       music.id !== id ? music : null
     );
-    setMusics(filteredMusics);
+    setFavoriteMusics(filteredMusics);
   };
 
+  const getUser= async()=>{
+    try {
+      const response= await api.get(`/users/user`)
+      return response.data
+    } catch (error) {
+      console.log('Erro na requisição ' + error)
+    }
+  }
+
+  const getUserMusics= async(user_id)=>{
+    try {
+      const response= await api.get(`/users-songs/users/${user_id}`)
+      return response.data
+    } catch (error) {
+      console.log('Erro na requisição ' + error)
+    }
+  }
   
+  useEffect( ()=>{
+    ( async()=>{
+
+      const auxUser= await getUser()
+      const auxFavoriteMusics= await getUserMusics(auxUser.id)
+      const auxFavoriteMusics2= auxFavoriteMusics.map((music, index)=>{
+        return { ...music, list_number: index+1}
+      })
+      setFavoriteMusics(auxFavoriteMusics2)
+
+    })()
+  },[])
+
 
   return ( 
     //APLICATIVO GERAL
@@ -83,7 +80,7 @@ function FavoritePlaylist(){
             {/*CABEÇALHO PARA AREA EM QUE APARECE AS MUSICAS*/}
             <div className="header-favPlaylist">
             <div className='header-favPlaylist-tittle'> <span className="material-symbols-outlined"> numbers </span> <h4> TÍTULO </h4> </div>
-            <h4>ÁLBUM</h4>
+            <h4>Gênero</h4>
             <span className="material-symbols-outlined"> schedule </span>
             </div>
 
@@ -92,7 +89,7 @@ function FavoritePlaylist(){
 
             {/*AREA EM QUE APARECE AS MUSICAS*/}
             <div className="favPlaylist"> 
-                {musics.map ((music) => ( //Mapear os itens da função "musics"
+                {favoriteMusics.map ((music) => ( //Mapear os itens da função "musics"
                     <ul key={music.id}> {/*Listar todas as música */}
                     < Music music={music} remove={remove}/> 
                     </ul> // Fim da listagem das músicas

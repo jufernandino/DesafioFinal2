@@ -7,7 +7,7 @@ const Music = ({ music, remove, favorite }) => {
         <div className="music"> 
             {/*AREA #TITULO*/}
             <div className="TITLE">
-                <p>{music.id}&emsp;</p>
+                <p>{music.list_number}&emsp;</p>
                 <div id='container-id'>
                     <p>{music.title}</p>
                     <p>{music.artist}</p>
@@ -15,7 +15,7 @@ const Music = ({ music, remove, favorite }) => {
             </div>
             {/*AREA ALBUM*/}
             <div className="ALBUM">
-                <p>{music.album}</p>
+                <p>{music.genre}</p>
             </div>
             {/*AREA COM INTERAÇÕES*/}
             <div className="ITERACTIONS">

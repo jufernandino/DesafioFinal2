@@ -63,7 +63,7 @@ const MyAccount = () => {
         </div>
         {/* LOCAL QUE APARECE O EMAIL DO USUARIO */}
         <div className="Email">
-          <input type="text" value={email} placeholder={email} onChange={(e)=>setEmail(e.target.value)}/>
+          <input type="text" value={email}/>
           <Chip id="icons" icon={<MailOutlineIcon />} />
         </div>
         {/* BOTÃO PARA TROCAR EMAIL */}

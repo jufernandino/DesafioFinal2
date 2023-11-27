@@ -29,7 +29,37 @@ const MODAL_EMAIL_STYLE = { //Estilo da Janela
 
 const ModalEmail = ({isOpen, setModalEmailOpen}) => {
 
-    const [email, setEmail] = useState("");
+    const [newEmail, setNewEmail] = useState("");
+
+    const getUser= async()=>{
+        try {
+          const response= await api.get('/users/user')
+          return response.data.id
+        } catch (error) {
+          console.log('Erro na requisição de id ' + error)
+        }
+    }
+    
+    async function updateEmail(user_id) {
+      try {
+        await api.put(`/users/:${user_id}`,
+        {
+            email: newEmail, 
+            role: "user",
+        }) 
+        console.log('Email alterado')
+        return setModalEmailOpen;
+      } catch (error) {
+        console.log('Falha na requisição do novo email')
+      }
+    }
+    useEffect( ()=>{
+        ( async()=>{
+          const auxUser= await getUser()
+          const auxEmail= await updateEmail(auxUser.id)
+          setNewEmail(auxEmail)
+        })()
+      },[])
 
     if(isOpen){
         return (
@@ -39,13 +69,13 @@ const ModalEmail = ({isOpen, setModalEmailOpen}) => {
                         <h1 id="NewEmail">Novo E-mail</h1>
                         {/* LOCAL PARA MUDAR O EMAIL */}
                         <div className="email">
-                            <input type="text" placeholder="Email" value={email}/>
+                            <input type="text" placeholder="Email" value={newEmail} onChange={(e)=>setNewEmail(e.target.value)}/>
                             <Chip id="icons" icon={<MailOutlineIcon />} />
                         </div>
                         {/* LOCAL PARA BOTÕES DE CANCELAR E CONFIRMAR */}
                         <div>
-                            <button className='Cancel' onClick = {setModalEmailOpen}>Cancelar</button>
-                            <button className='Confirm'>Confirmar</button>
+                            <button className='Cancel' onClick = {setModalEmailOpen} >Cancelar</button>
+                            <button className='Confirm' onClick = {updateEmail(getUser)} >Confirmar</button>
                         </div>
                     </div>
                 </div>

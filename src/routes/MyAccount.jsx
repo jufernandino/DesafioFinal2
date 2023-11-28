@@ -13,7 +13,6 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 //FUNÇÃO PARA A PÁGINA MINHA CONTA
 const MyAccount = () => {
   const [email, setEmail] = useState("");
-  const [senha, setsenha] = useState("");
   const [name, setName]= useState("")
   const [openModalEmail, setOpenModalEmail] = useState(false)
   const [openModalPass, setOpenModalPass] = useState(false)

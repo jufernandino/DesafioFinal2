@@ -18,7 +18,7 @@ const BG_STYLE = { //Estilo do background
 const MODAL_EMAIL_STYLE = { //Estilo da Janela
     position:'fixed',
     top:'50%',
-    height:'261.26px',
+    height:'281.26px',
     left:'50%',
     width:'506.19px',
     transform:'translate(-50%, -50%)',
@@ -30,11 +30,13 @@ const MODAL_EMAIL_STYLE = { //Estilo da Janela
 const ModalEmail = ({isOpen, setModalEmailOpen}) => {
 
     const [newEmail, setNewEmail] = useState("");
+    const [userId, setUserId]= useState("");
+    const [visibleEmailMessage, setVisibleEmailMessage]= useState(false)
 
     const getUser= async()=>{
         try {
           const response= await api.get('/users/user')
-          return response.data.id
+          return response.data
         } catch (error) {
           console.log('Erro na requisição de id ' + error)
         }
@@ -42,24 +44,38 @@ const ModalEmail = ({isOpen, setModalEmailOpen}) => {
     
     async function updateEmail(user_id) {
       try {
-        await api.put(`/users/:${user_id}`,
+        await api.put(`/users/${user_id}`,
         {
-            email: newEmail, 
-            role: "user",
+            email: newEmail
         }) 
-        console.log('Email alterado')
-        return setModalEmailOpen;
+        setVisibleEmailMessage(true)
+        const message= document.querySelector("div#email-message")
+        message.innerText= 'Email alterado.'
+        message.style.color= '#3FE168'
+        console.log('Email alterado para ' + newEmail)
+
       } catch (error) {
+        const message= document.querySelector("div#email-message")
+        message.innerText= 'Email alterado não alterado.'
+        message.style.color= '#E42D2D'
         console.log('Falha na requisição do novo email')
       }
     }
+
+    async function Confirm(){
+      await updateEmail(userId)
+      setTimeout(() => {
+        setModalEmailOpen()
+      }, 2000);
+    }
+
     useEffect( ()=>{
         ( async()=>{
+          setVisibleEmailMessage(false)
           const auxUser= await getUser()
-          const auxEmail= await updateEmail(auxUser.id)
-          setNewEmail(auxEmail)
+          setUserId(auxUser.id)
         })()
-      },[])
+    },[])
 
     if(isOpen){
         return (
@@ -75,8 +91,9 @@ const ModalEmail = ({isOpen, setModalEmailOpen}) => {
                         {/* LOCAL PARA BOTÕES DE CANCELAR E CONFIRMAR */}
                         <div>
                             <button className='Cancel' onClick = {setModalEmailOpen} >Cancelar</button>
-                            <button className='Confirm' onClick = {updateEmail(getUser)} >Confirmar</button>
+                            <button className='Confirm' onClick = {Confirm} >Confirmar</button>
                         </div>
+                        {visibleEmailMessage && <div id='email-message'></div>}
                     </div>
                 </div>
             </div>
@@ -86,3 +103,6 @@ const ModalEmail = ({isOpen, setModalEmailOpen}) => {
 };
 
 export default ModalEmail
+
+//erros
+// id, retornando response.data.id e tentando pegar o auxUser.id no useeffect, tentando chamar getUser dentro de onclique

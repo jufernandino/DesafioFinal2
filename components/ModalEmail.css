@@ -10,7 +10,7 @@ body {
     --green:#3FE168;
     color: var(--gray-text);
 }
-  
+
 .Modal-Email{ /*JANELA GERAL*/
     display:flex;
     flex-direction: column;
@@ -70,4 +70,8 @@ input{ /*LOCAL DE INSERIR NOVO EMAIL*/
 #icons{ /*ICONE DO EMAIL*/
     margin-left: -50px;
     background-color: #3c3c3c00;
+}
+
+#email-message{
+    margin-top: 10px;
 }

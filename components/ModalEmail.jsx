@@ -103,6 +103,3 @@ const ModalEmail = ({isOpen, setModalEmailOpen}) => {
 };
 
 export default ModalEmail
-
-//erros
-// id, retornando response.data.id e tentando pegar o auxUser.id no useeffect, tentando chamar getUser dentro de onclique
